@@ -1,0 +1,152 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asha Project</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-brand">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Asha Project Logo">
+        </div>
+        <div class="nav-links" id="navLinks">
+            <i class="fas fa-times" onclick="hideMenu()"></i>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#testimonial">Testimonial</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#" class="cart-icon"><i class="fas fa-shopping-cart"></i></a></li>
+            </ul>
+        </div>
+        <i class="fas fa-bars" onclick="showMenu()"></i>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome!</h1>
+            <p>"Asha project menyediakan berbagai jasa pembuatan desain, dengan cepat dan hasil yang berkualitas."</p>
+            <img src="{{ url_for('static', filename='homeimage.png') }}" alt="Home Image">
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <h2>Our Services</h2>
+        <div class="products-container">
+            <!-- Professional Poster Design -->
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='image1.png') }}" alt="Professional Poster Design">
+                <h3>Professional poster design</h3>
+                <p>for your small business</p>
+                <p class="price">Rp 15,000</p>
+                <a href="{{ url_for('order', product_id=0) }}" class="btn">Pesan Sekarang</a>
+            </div>
+            
+            <!-- Gaming Tournament -->
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='image2.png') }}" alt="Gaming Tournament">
+                <h3>Gaming Tournament</h3>
+                <p>Eye-catching posters for your gaming events</p>
+                <p class="price">Rp 35,000</p>
+                <a href="{{ url_for('order', product_id=1) }}" class="btn">Pesan Sekarang</a>
+            </div>
+            
+            <!-- Jersey Design -->
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='image3.png') }}" alt="Jersey Design">
+                <h3>Jersey Desain</h3>
+                <p>Custom jersey designs for your team</p>
+                <p class="price">Rp 150,000</p>
+                <a href="{{ url_for('order', product_id=2) }}" class="btn">Pesan Sekarang</a>
+            </div>
+        </div>
+    
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h1>About Asha Project</h1>
+        <br>
+        <h4>Perusahaan ini dibentuk pada tahun 2022 pada masa Covid 
+            <br>
+            oleh Adi Mukarasa yang sering dipanggil Arasha, 
+            <br>
+            dimana perusahaan ini berawal dengan market pelaku bisnis
+            <br>
+             yang memainkan game online berupa Mobile Legend.</h4>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <h2>Our Team</h2>
+        <div class="team-container">
+            <!-- Owner -->
+            <div class="team-card">
+                <img src="{{ url_for('static', filename='team1.jpg') }}" alt="Arasha">
+                <h3>Arasha</h3>
+                <p>Owner</p>
+            </div>
+            
+            <!-- Editor -->
+            <div class="team-card">
+                <img src="{{ url_for('static', filename='team2.jpg') }}" alt="Thia Shopy">
+                <h3>Thia Shopy</h3>
+                <p>Editor</p>
+            </div>
+            
+            <!-- Marketing -->
+            <div class="team-card">
+                <img src="{{ url_for('static', filename='team3.jpg') }}" alt="Khabibah">
+                <h3>Khabibah</h3>
+                <p>Pemasaran</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonial" class="testimonial">
+        <h2>Client Testimonials</h2>
+        <div class="testimonial-container">
+            {% for testimonial in testimonials %}
+            <div class="testimonial-card">
+                <p>"{{ testimonial.text }}"</p>
+                <h4>-{{ testimonial.name }}-</h4>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact</h2>
+        <div class="contact-info">
+            <p><i class="fab fa-whatsapp"></i> +62 851-8220-5970</p>
+            <p><i class="fas fa-globe"></i> asha.project.id</p>
+            <p><i class="fas fa-envelope"></i> asha.project0@gmail.com</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Copyright 2025 All Right Reserved Design by Thia Shopy & Khabibah</p>
+    </footer>
+
+    <script>
+        function showMenu() {
+            document.getElementById("navLinks").style.right = "0";
+        }
+        
+        function hideMenu() {
+            document.getElementById("navLinks").style.right = "-200px";
+        }
+    </script>
+</body>
+</html>
